@@ -44,8 +44,28 @@
 //   print str
 
 
-function pyramid(n) {
+function pyramid(n, row = 0, level = '') {
+  if (row === n) {
+    return;
+  }
 
+  const levelLen = 2 * n - 1;
+
+  if (level.length === levelLen) {
+    console.log(level);
+    return pyramid(n, row + 1);
+  }
+
+  const midIdx = Math.floor(levelLen / 2);
+  let add = '';
+
+  if (level.length >= midIdx - row && level.length <= midIdx + row) {
+    add = '#';
+  } else {
+    add = ' ';
+  }
+
+  return pyramid(n, row, level + add);
 }
 
 module.exports = pyramid;
@@ -91,4 +111,23 @@ module.exports = pyramid;
 //   }
 //
 //   return pyramid(n, level, col + 1, str);
+// }
+
+// function pyramid(n) {
+//   const strLen = 2 * n - 1;
+//   const midIdx = Math.floor(strLen / 2);
+//
+//   for (let row = 0; row < n; row++) {
+//     let str = '';
+//
+//     for (let col = 0; col < strLen; col++) {
+//       if (col >= midIdx - row && col <= midIdx + row) {
+//         str += '#';
+//       } else {
+//         str += ' ';
+//       }
+//     }
+//
+//     console.log(str);
+//   }
 // }
