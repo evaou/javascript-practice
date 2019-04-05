@@ -11,5 +11,5 @@ Jest is Facebook test framework
 
 ### Run unit test
 
-    $ jest fizzbuzz/test.js --watch
+    $ jest exercise/fizzbuzz/test.js --watch
 
