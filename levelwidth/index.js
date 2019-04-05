@@ -11,22 +11,20 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-const Node = require('./node');
-
 function levelWidth(root) {
   const width = [0];
-  const levelNode = new Node('s');
-  const tmpArr = [root, levelNode];
+  const levelEnd = 's';
+  const tmpArr = [root, levelEnd];
 
   while (tmpArr.length > 1) {
     const tmpNode = tmpArr.shift();
 
-    if (tmpNode === levelNode) {
+    if (tmpNode === levelEnd) {
       tmpArr.push(tmpNode);
       width.push(0);
       continue;
     }
-    
+
     tmpArr.push(...tmpNode.children);
     width[width.length-1] += 1;
   }
